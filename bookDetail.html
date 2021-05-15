@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图书详情页</title>
+		<link href="css/bookdetail.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-3.5.1.min.js"></script>
+		<script src="js/bookDetail.js"></script>
+		<script src="js/addToCart.js"></script>
+		
+	</head>
+	<body>
+		
+		<div id="top"></div>
+		<div id="bookdetail">
+			<div id="bookdetailimage">
+				<div id="largepic">
+					<img src="" id="largebookimage" />
+				</div>
+				<div id="smallpic">
+					
+				</div>
+			</div>
+
+			<!--图书详情文字栏-->
+			<div id="bookdetailtxt">
+				<div id="bookname">《呐喊》</div>
+				<div id="bookisbn">13232343234</div>
+				<div id="bookauthor">鲁迅</div>
+				<div id="updatetime">2010-02-02</div>
+				<div id="bookpirce">￥39</div>
+				<div style="font-size: 15px;color: #111111;height: 20px;">图书简介：</div>
+				<div id="bookdes"></div>
+				<div id="opt_btn">
+			<input type="button" id="addtocart" value="加入购物车" onclick="addToCar(bookid)"/>
+					<input type="button" id="buynow" value="立即购买" />
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

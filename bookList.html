@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/index.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-3.5.1.min.js"></script>
+		<script src="js/booklist.js"></script>
+		<script src="js/addToCart.js"></script>
+		<script src="js/menu.js"></script>
+		<script>
+				$(document).ready(function(){
+			$("#top").load("top.html");
+		});	
+		</script>
+	<script>
+			$(document).ready(function(){
+		$("#footer").load("footer.html");
+	});	
+	</script>
+	</head>
+	<body>
+		
+		<!-- 顶端-->
+		<div id="top"></div>
+		<div id="menubar"></div>
+		<!--导航栏-->
+		<div id="routebar"></div>
+		<!--图书信息列表-->
+		<div id="booklist"></div>
+		<!--图书页码-->
+		<div id="pagelist"></div>
+	<!-- 	<div id="bookinfo">
+			<div id="bookimage">
+				<img src="" />
+			</div>
+			<div id="bookinfo_text">
+				<p id="bookname">书名：西游记</p>
+				<p id="bookauthor">作者：吴承恩</p>
+				<p id="price">价格：999</p>
+				<p id="describle">图书介绍</p>
+				<div id="optbuttons">
+					<input type="button" id="btn_toCar" value="加入购物车" />
+					<input type="button" id="btn_Favorites" value="收藏" />
+				</div>
+				
+			</div>
+		</div> -->
+		<div id="footer"></div>
+	</body>
+</html>

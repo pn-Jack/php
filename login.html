@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录页面</title>
+		<link href="css/register.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-3.5.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#username').blur(function(){
+					$.post("API/userLogin.php",
+					{
+						username:$('#username').val()
+					},
+					function(data,status){
+						
+						if(data=='1'){
+							$('#ts_icon').attr('src','assets/ok.png');
+						}else{
+							$('#ts_icon').attr('src','assets/false.png');
+						}
+					});
+				});
+				$('#submitconfig').click(function(){
+					$.post("API/userLogin.php",
+					{
+						username:$('#username').val(),
+						password:$('#password').val()
+					},
+					function(data,status){
+						if(data=="2")
+						{
+							alert('登录成功');
+							location.href='index.html';
+						}else{
+							alert('登录失败');
+						}
+					});
+				});
+
+
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		<a href="register.html" class="goregister">没有账号,去注册>>  </a>
+		<div style="margin-top:100px">
+			<h2>用户登录</h2>
+			<form  name="configfrom" method="post" action="API/userLogin.php">
+				<p>
+					<label for="username">用户名：</label>
+					<input type="text" name="username" id="username" placeholder="请输入1-16个字符" autofocus required ><img src="" id="ts_icon" />
+				</p>
+				<p>
+					<label for="password">密码：</label>
+					<input type="password" name="password" id="password" class="txtbox" placeholder="请输入大于6个字符密码" autofocus required >
+				</p>
+			
+				<input type="submit" id="submitconfig" value="登录">
+		
+			</form>
+		</div>
+			
+	</body>
+</html>

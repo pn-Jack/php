@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>订单页面</title>
+		<link href="css/settleList.css" rel="stylesheet" type="text/css" />
+		<script src="jquery-3.5.1.min.js"></script>
+		<script src="js/settleList.js"></script>
+		<script>
+				$(document).ready(function(){
+			$("#top").load("top.html");
+		});	
+		
+				$(document).ready(function(){
+			$("#footer").load("footer.html");
+		});	
+		</script>
+	</head>
+	
+	
+	<body>
+		<div id="top"></div>
+		<a href="cartList.html" style="display: block; color: #000000;text-decoration: none; text-align: right;font-weight: bold; margin-top: 5px;">返回购物车</a>
+		<!-- 列表-->
+		<div id="listbox">
+			
+		</div>
+		<div id="optbar">
+			<input type="button" id="btnpay" value="去支付" style="width: 90px; height: 35px; margin-left: 1000px;margin-bottom: 16px;background-color: #ff2832;border: #800000 1px; color: beige;border-radius:4px" />
+		</div>
+		<div id="footer"></div>
+	</body>
+</html>

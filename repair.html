@@ -1,0 +1,277 @@
+
+<html lang="zh-CN"><head>
+    <meta charset="utf-8">
+    <title>网站升级中...敬请期待！</title>
+</head>
+<body>
+<canvas id="screen" width="1853" height="575"></canvas>
+<div class="shadow_box">
+	<span class="shadow_load">
+		<span id="shadow_load">网站升级中</span>
+		<label id="load"> ▪ ▪ ▪</label>
+	</span>
+    <span class="shadow_font font_border">敬<span>请</span>期待</span>
+    <span class="shadow_font stripe_inner">敬<span>请</span>期待</span>
+</div>
+<style>
+    *{font-family:"微软雅黑";}
+    canvas {position:absolute;top:0px;left:0px;}
+    .shadow_box{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+    .font_border{text-shadow:4px 4px 0 white,4px -4px 0 white,-4px -4px 0 white,-4px 4px 0 white,4px 3px 0 white,4px -3px 0 white,-4px -3px 0 white,-4px 3px 0 white,4px 2px 0 white,4px -2px 0 white,-4px -2px 0 white,-4px 2px 0 white,4px 1px 0 white,4px -1px 0 white,-4px -1px 0 white,-4px 1px 0 white,4px 0px 0 white,-4px 0px 0 white,-4px 0px 0 white,3px 4px 0 white,3px -4px 0 white,-3px -4px 0 white,-3px 4px 0 white,3px 3px 0 white,3px -3px 0 white,-3px -3px 0 white,-3px 3px 0 white,3px 2px 0 white,3px -2px 0 white,-3px -2px 0 white,-3px 2px 0 white,3px 1px 0 white,3px -1px 0 white,-3px -1px 0 white,-3px 1px 0 white,3px 0px 0 white,-3px 0px 0 white,-3px 0px 0 white,2px 4px 0 white,2px -4px 0 white,-2px -4px 0 white,-2px 4px 0 white,2px 3px 0 white,2px -3px 0 white,-2px -3px 0 white,-2px 3px 0 white,2px 2px 0 white,2px -2px 0 white,-2px -2px 0 white,-2px 2px 0 white,2px 1px 0 white,2px -1px 0 white,-2px -1px 0 white,-2px 1px 0 white,2px 0px 0 white,-2px 0px 0 white,-2px 0px 0 white,1px 4px 0 white,1px -4px 0 white,-1px -4px 0 white,-1px 4px 0 white,1px 3px 0 white,1px -3px 0 white,-1px -3px 0 white,-1px 3px 0 white,1px 2px 0 white,1px -2px 0 white,-1px -2px 0 white,-1px 2px 0 white,1px 1px 0 white,1px -1px 0 white,-1px -1px 0 white,-1px 1px 0 white,1px 0px 0 white,-1px 0px 0 white,-1px 0px 0 white,0px 4px 0 white,0px -4px 0 white,0px 4px 0 white,0px 3px 0 white,0px -3px 0 white,0px -3px 0 white,0px 2px 0 white,0px -2px 0 white,0px -2px 0 white,0px -1px 0 white,0px -1px 0 white,0px 1px 0 white,0px 0px 0 white,0px 0px 20px black,0px 0px 40px black;}
+    .shadow_load {position:absolute;top:-40px;left:-80px;font-size:50px;letter-spacing:2px;font-weight:bold;color:#ffffff;text-shadow:0px 0px 20px black;}
+    .shadow_font {display:block;width:600px;font-size:100px;letter-spacing:6px;font-style:italic;font-weight:bold;position:relative;top:20px;left:80px;color:#f00;}
+    .shadow_font span {font-size:240px;}
+    :root {--stripe-size:100px;--color1:#f00;--color2:#ff8888;--duration:2s;}
+    .stripe_inner {width:600px;position:absolute;top:20px;left:62px;text-align:center;color:rgba(255,255,255,0);background:repeating-linear-gradient(45deg,var(--color1) 25%,var(--color1) 50%,var(--color2) 50%,var(--color2) 75%);background-size:var(--stripe-size) var(--stripe-size);-webkit-background-clip:text;-webkit-animation:stripeBackgroundPosition var(--duration) linear infinite;animation:stripeBackgroundPosition var(--duration) linear infinite;-webkit-color:red;}
+    @-webkit-keyframes stripeTransform {
+        0% {-webkit-transform:translateX(0);transform:translateX(0);}
+        100% {-webkit-transform:translateX(calc(var(--stripe-size) * -1));transform:translateX(calc(var(--stripe-size) * -1));}
+    }
+    @keyframes stripeTransform {
+        0% {-webkit-transform:translateX(0);transform:translateX(0);}
+        100% {-webkit-transform:translateX(calc(var(--stripe-size) * -1));transform:translateX(calc(var(--stripe-size) * -1));}
+    }
+    @-webkit-keyframes stripeBackgroundPosition {
+        0% {background-position:0 0;}
+        100% {background-position:calc(var(--stripe-size) * -1) 0;}
+    }
+    @keyframes stripeBackgroundPosition {
+        0% {background-position:0 0;}
+        100% {background-position:calc(var(--stripe-size) * -1) 0;}
+    }
+</style>
+<script>
+    var shadow_load = document.getElementById("shadow_load");
+    if (shadow_load.innerText != ""){
+        document.title = shadow_load.innerText + "敬请期待";
+    }
+    var num = 0;
+    var numload = "";
+    function Times(){
+        num++;
+        if (num == 4){
+            num = 0;
+            numload = "";
+        }else{
+            numload = "";
+            for (var i=0;i<num;i++){
+                numload += " ▪";
+            }
+        }
+        document.getElementById("load").innerText = numload;
+        setTimeout(function(){Times()},1000);
+    }
+    Times();
+    var screenWidth = window.innerWidth;
+    var screenHeight = window.innerHeight;
+    var minVx = -10;
+    var deltaVx = 20;
+    var minVy = 25
+    var deltaVy = 15;
+    var minParticleV = 5;
+    var deltaParticleV = 5;
+    var gravity = 1;
+    var explosionRadius = 200;
+    var bombRadius = 10;
+    var explodingDuration = 100;
+    var explosionDividerFactor = 10;
+    var nBombs = 1;
+    var percentChanceNewBomb = 5;
+    function Color(min) {
+        min = min || 0;
+        this.r = colorValue(min);
+        this.g = colorValue(min);
+        this.b = colorValue(min);
+        this.style = createColorStyle(this.r,this.g,this.b);
+    };
+    function colorValue(min) {
+        return Math.floor(Math.random() * 255 + min);
+    }
+    function createColorStyle(r,g,b) {
+        return 'rgba(' + r + ',' + g + ',' + b + ',0.8)';
+    }
+    function Bomb(){
+        var self = this;
+        self.radius = bombRadius;
+        self.previousRadius = bombRadius;
+        self.explodingDuration = explodingDuration;
+        self.hasExploded = false;
+        self.alive = true;
+        self.color = new Color();
+        self.px = (window.innerWidth / 4) + (Math.random() * window.innerWidth / 2);
+        self.py = window.innerHeight;
+        self.vx = minVx + Math.random() * deltaVx;
+        self.vy = (minVy + Math.random() * deltaVy) * -1;
+        self.duration =
+            self.update = function(particlesVector){
+                if(self.hasExploded){
+                    var deltaRadius = explosionRadius - self.radius;
+                    self.previousRadius = self.radius;
+                    self.radius += deltaRadius / explosionDividerFactor;
+                    self.explodingDuration--;
+                    if(self.explodingDuration == 0){
+                        self.alive = false;
+                    }
+                }
+                else{
+                    self.vx += 0;
+                    self.vy += gravity;
+                    if(self.vy >= 0){
+                        self.explode(particlesVector);
+                    }
+
+                    self.px += self.vx;
+                    self.py += self.vy;
+                }
+            };
+        self.draw = function(ctx){
+            ctx.beginPath();
+            ctx.arc(self.px,self.py,self.previousRadius,0,Math.PI * 2,false);
+            if(self.hasExploded){
+            }
+            else{
+                ctx.fillStyle = self.color.style;
+                ctx.lineWidth = 1;
+                ctx.fill();
+            }
+        };
+        self.explode = function(particlesVector){
+            self.hasExploded = true;
+            var e = 3 + Math.floor(Math.random() * 3);
+            for(var j = 0; j < e; j++){
+                var n = 10 + Math.floor(Math.random() * 21);
+                var speed = minParticleV + Math.random() * deltaParticleV;
+                var deltaAngle = 2 * Math.PI / n;
+                var initialAngle = Math.random() * deltaAngle;
+                for(var i = 0; i < n; i++){
+                    particlesVector.push(new Particle(self,	i * deltaAngle + initialAngle,speed));
+                }
+            }
+        };
+    }
+    function Particle(parent,angle,speed){
+        var self = this;
+        self.px = parent.px;
+        self.py = parent.py;
+        self.vx = Math.cos(angle) * speed;
+        self.vy = Math.sin(angle) * speed;
+        self.color = parent.color;
+        self.duration = 40 + Math.floor(Math.random()*20);
+        self.alive = true;
+        self.update = function(){
+            self.vx += 0;
+            self.vy += gravity / 10;
+            self.px += self.vx;
+            self.py += self.vy;
+            self.radius = 3;
+            self.duration--;
+            if(self.duration <= 0){
+                self.alive = false;
+            }
+        };
+        self.draw = function(ctx){
+            ctx.beginPath();
+            ctx.arc(self.px,self.py,self.radius,0,Math.PI * 2,false);
+            ctx.fillStyle = self.color.style;
+            ctx.lineWidth = 1;
+            ctx.fill();
+        };
+    }
+    function Controller(){
+        var self = this;
+        self.canvas = document.getElementById("screen");
+        self.canvas.width = screenWidth;
+        self.canvas.height = screenHeight;
+        self.ctx = self.canvas.getContext('2d');
+        function setSpeedParams(){
+            var heightReached = 0;
+            var vy = 0;
+            while(heightReached < screenHeight && vy >= 0){
+                vy += gravity;
+                heightReached += vy;
+            }
+            minVy = vy / 2;
+            deltaVy = vy - minVy;
+            vx = (1 / 4) * screenWidth / (vy / 2);
+            minVx = -vx;
+            deltaVx = 2*vx;
+        };
+        self.resize = function(){
+            screenWidth = window.innerWidth;
+            screenHeight = window.innerHeight;
+            self.canvas.width = screenWidth;
+            self.canvas.height = screenHeight;
+            setSpeedParams();
+        };
+        self.resize();
+        window.onresize = self.resize;
+        self.init = function(){
+            self.readyBombs = [];
+            self.explodedBombs = [];
+            self.particles = [];
+            for(var i = 0; i < nBombs; i++){
+                self.readyBombs.push(new Bomb());
+            }
+        }
+        self.update = function(){
+            var aliveBombs = [];
+            while(self.explodedBombs.length > 0){
+                var bomb = self.explodedBombs.shift();
+                bomb.update();
+                if(bomb.alive){
+                    aliveBombs.push(bomb);
+                }
+            }
+            self.explodedBombs = aliveBombs;
+            var notExplodedBombs = [];
+            while(self.readyBombs.length > 0){
+                var bomb = self.readyBombs.shift();
+                bomb.update(self.particles);
+                if(bomb.hasExploded){
+                    self.explodedBombs.push(bomb);
+                }
+                else{
+                    notExplodedBombs.push(bomb);
+                }
+            }
+            self.readyBombs = notExplodedBombs;
+            var aliveParticles = [];
+            while(self.particles.length > 0){
+                var particle = self.particles.shift();
+                particle.update();
+                if(particle.alive){
+                    aliveParticles.push(particle);
+                }
+            }
+            self.particles = aliveParticles;
+        }
+        self.draw = function(){
+            self.ctx.beginPath();
+            self.ctx.fillStyle='#41c4ff';//背景颜色
+            self.ctx.fillRect(0,0,self.canvas.width,self.canvas.height);
+            for(var i = 0; i < self.readyBombs.length; i++){
+                self.readyBombs[i].draw(self.ctx);
+            }
+            for(var i = 0; i < self.explodedBombs.length; i++){
+                self.explodedBombs[i].draw(self.ctx);
+            }
+            for(var i = 0; i < self.particles.length; i++){
+                self.particles[i].draw(self.ctx);
+            }
+        }
+        self.animation = function(){
+            self.update();
+            self.draw()
+            if(Math.random() * 100 < percentChanceNewBomb) {
+                self.readyBombs.push(new Bomb());
+            }
+            requestAnimationFrame(self.animation);
+        }
+    }
+    var controller = new Controller();
+    controller.init();
+    requestAnimationFrame(controller.animation);
+</script>
+
+
+</body></html>
